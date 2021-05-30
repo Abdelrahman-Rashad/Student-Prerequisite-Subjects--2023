@@ -12,8 +12,14 @@ student::student()
 
 }
 
-bool student::open(string nam, string pass, vector<student_info> s)
+/*bool student::open(string nam, string pass, vector<student_info> s)
 {
+	string sname,spass;
+	cout << "Student Name: ";
+	cin >> sname;
+	cout << "Student Password: ";
+	cin >> spass;
+
 	// it loops for each student
 	for (int i = 0; i < s.size(); i++)
 	{
@@ -21,7 +27,30 @@ bool student::open(string nam, string pass, vector<student_info> s)
 		{
 			return 1;
 		}
+		else
+		{
+			cout << "Please Re-enter Your Data \n ";
+			open("a","1",s);
+			break;
+		}
 	}
+	return 0;
+}*/
+
+bool student::open(string nam, string pass, vector<student_info> s)
+{
+
+	// it loops for each student
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (pass == s[i].getpassword() && nam == s[i].getname())
+		{
+			cout << "  \n\n\n\t\t\t                          ***You Logged in Successfuly***              \n \n \n ";
+			return 1;
+		}
+
+	}
+	cout << "\t\t\n Please Re-enter Your Data \n\n ";
 	return 0;
 }
 
@@ -33,15 +62,16 @@ void student::view_all_courses(int num, vector<student_info> s)
 	// variable to store the size of courses in progress from a specific student
 	int count_progress = s[num].courses_in_progress.size();
 
+	cout << "\n\n\t\t\t ***********************\n\n";
 	// it loops for each finished course from a specific student
 	for (int i = 0; i < count_finish; i++)
 	{
-		Course c= s[num].getfinished_courses(i);
-		cout << " \t Finished course : "<<c.getname() << endl;
+		Course c = s[num].getfinished_courses(i);
+		cout << " \t Finished course : " << c.getname() << endl;
 	}
 
 	cout << "\n\n\t\t\t ***********************\n\n";
-	
+	cout << "\n\n\t\t\t ***********************\n\n";
 	// it loops for each courses in progress from a specific student
 	for (int i = 0; i < count_progress; i++)
 	{
@@ -52,7 +82,7 @@ void student::view_all_courses(int num, vector<student_info> s)
 	cout << "\n\n\t\t\t ***********************\n\n";
 }
 
-void student::edit_data(vector<student_info>& s , string pass ,int index)
+void student::edit_data(vector<student_info>& s, string pass, int index)
 {
 	s[index].setpassword(pass);
 }
@@ -68,6 +98,3 @@ void student::view_details_of_a_specific_course()
 void student::register_for_course()
 {
 }
-
-
-
