@@ -5,9 +5,11 @@
 using namespace std;
 
 
-void student_info::setid(int num)
+int student_info::ID = 0;
+
+student_info::student_info():academic_year(0)
 {
-	this->ID = num;
+	ID++;
 }
 
 void student_info::setfinished_courses(Course c)
@@ -24,6 +26,8 @@ void student_info::setacademic_year(int num)
 {
 	this->academic_year = num;
 }
+
+
 
 int student_info::getid()
 {

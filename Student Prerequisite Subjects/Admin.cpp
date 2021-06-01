@@ -32,9 +32,7 @@ student_info Admin::addstudent(vector<Course> c)
 	cin >> pass;
 	s.setpassword(pass);
 
-	cout << "\n\t Please enter the id : ";
-	cin >> id;
-	s.setid(id);
+	
 	cout << "\n\n\t\t if he/she has finished courses enter 1 to write this courses : ";
 	cin >> check;
 	if (check)
@@ -58,6 +56,8 @@ student_info Admin::addstudent(vector<Course> c)
 	cout << "\n\t Please enter the academic year : ";
 	cin >> academic_year;
 	s.setacademic_year(academic_year);
+
+	cout << "\n\t Your ID : " << s.getid() << endl;
 
 	// I return (student_info s) to store in (vector <student_info>) in main
 	return s;
@@ -122,7 +122,8 @@ void Admin::view_students_in_a_specific_course(vector<student_info> s)
 	cout << "\n\n\t\t Enter the course name : ";
 	cin >> search;
 
-	cout << "\t\t\t\n\n students\n\n";
+	cout << "\n\n\t\t\t students \n";
+	cout << "\t\t\t ******** \n\n";
 
 	// it loop for each student
 	for (int i = 0; i < s.size(); i++)
@@ -140,7 +141,7 @@ void Admin::view_students_in_a_specific_course(vector<student_info> s)
 			if (s[i].getcourses_in_progress(j).getname() == search)
 			{
 				// print student name
-				cout << "\t\t\t " << s[i].getname() << "\n\n";
+				cout << "\t\t\t " << s[i].getname() << "\n";
 			}
 
 		}

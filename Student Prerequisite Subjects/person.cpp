@@ -1,15 +1,5 @@
 #include "person.h"
 
-person::person(string name, string password)
-{
-	this->name = name;
-	this->password = password;
-}
-
-person::person()
-{
-	
-}
 
 void person::setname(string name)
 {

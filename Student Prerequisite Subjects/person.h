@@ -7,8 +7,6 @@ class person
 	string password;
 
 public:
-	person(string name,string password);
-	person();
 
 	// set functions
 	void setname(string name);

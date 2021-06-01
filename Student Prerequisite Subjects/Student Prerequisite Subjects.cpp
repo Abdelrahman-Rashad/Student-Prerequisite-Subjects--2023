@@ -10,6 +10,9 @@
 #include"Admin.h"
 using namespace std;
 
+Course data_course( string name, string code, int num, int hour);
+student_info data_student(int academic_year, string name, string password, vector<Course> c);
+
 int main()
 {
     vector<student_info> s;
@@ -21,7 +24,14 @@ int main()
     int chooseStud = 0;
     bool check;
 
-
+   /* c[0].setname("sp");
+    c[0].setcode("cs12");
+    c[0].setnum_of_student(20);
+    c[0].sethours(3);*/
+    c.push_back(data_course("sp", "cs12", 20, 3));
+    c.push_back(data_course("oop", "as12", 30, 3));
+    s.push_back(data_student(1,"Ahmed","123",c));
+    s.push_back(data_student(1, "Ali", "125", c));
 
     
     cout << "\n\n\t\t\t\t\t WELCOME TO STUDENT PREREQUISITE SUBJECT \n\n\n\n";
@@ -146,8 +156,8 @@ int main()
                     }
 
                     }
-                    system("CLS");  // clear the console
-                    cout << "\n\n\n\t\t\t If you want to continue enter 1, if not enter another number: ";
+                    //system("CLS");  // clear the console
+                    cout << "\n\n\n\n\n\t\t\t If you want to continue enter 1, if not enter another number: ";
                     cin >> continue_loop;
                     cout << "\n\n";
                 } while (continue_loop == 1);
@@ -163,3 +173,22 @@ int main()
 }
 
 
+Course data_course(string name, string code,int num,int hour) {
+
+    Course c;
+    c.setname(name);
+    c.setcode(code);
+    c.setnum_of_student(num);
+    c.sethours(hour);
+    return c;
+}
+
+student_info data_student( int academic_year, string name, string password, vector<Course> c)
+{
+    student_info s;
+    s.setname(name);
+    s.setpassword(password);
+    s.setacademic_year(academic_year);
+    s.setfinished_courses(c[0]);
+    return s;
+}
