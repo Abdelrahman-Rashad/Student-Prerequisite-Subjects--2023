@@ -10,7 +10,7 @@
 #include"Admin.h"
 using namespace std;
 
-Course data_course( string name, string code, int num, int hour);
+Course data_course(string name, string code, int num, int hour);
 student_info data_student(int academic_year, string name, string password, vector<Course> c);
 
 int main()
@@ -24,21 +24,20 @@ int main()
     int chooseStud = 0;
     bool check;
 
-   /* c[0].setname("sp");
-    c[0].setcode("cs12");
-    c[0].setnum_of_student(20);
-    c[0].sethours(3);*/
+
     c.push_back(data_course("sp", "cs12", 20, 3));
     c.push_back(data_course("oop", "as12", 30, 3));
-    s.push_back(data_student(1,"Ahmed","123",c));
+    s.push_back(data_student(1, "Ahmed", "123", c));
     s.push_back(data_student(1, "Ali", "125", c));
 
-    
-    cout << "\n\n\t\t\t\t\t WELCOME TO STUDENT PREREQUISITE SUBJECT \n\n\n\n";
+
+
 
 
     do
     {
+        system("CLS");  // clear the console
+        cout << "\n\n\t\t\t\t\t WELCOME TO STUDENT PREREQUISITE SUBJECT \n\n\n\n";
         cout << "\n\n\n\t\t If you want to log in as Student enter 1, if you want to log in as admin enter 0 : ";
         cin >> chooseStud;
         cout << "\n\n\n\n\t Enter your name : ";
@@ -52,39 +51,40 @@ int main()
             {
                 do
                 {
-                    
+
                     system("CLS");  // clear the console
                     cout << "\n\n\t\t\t\t\t WELCOME TO STUDENT PREREQUISITE SUBJECT \n\n\n\n";
-                    cout << "enter your choice :- (if you want to log out enter another number) \n";
+                    
                     cout << "\n\t\t\t\t 1- View List of all available courses." << endl;
                     cout << "\t\t\t\t 2- View details of specific course." << endl;
                     cout << "\t\t\t\t 3- Register for a course." << endl;
                     cout << "\t\t\t\t 4- View all courses." << endl;
                     cout << "\t\t\t\t 5- Edit your data. \n\n\n" << endl;
+                    cout << "\n\n\n\t\tenter your choice :- (if you want to log out enter another number) : ";
                     cin >> choose;
                     system("CLS");  // clear the console
                     switch (choose) {
 
                     case 1:
-                    { 
-                    stud.view_list_of_all_available_courses();
-                    break;
+                    {
+                        stud.view_list_of_all_available_courses();
+                        break;
                     }
                     case 2:
                     {
-                        stud.view_details_of_a_specific_course();
+                        stud.view_details_of_a_specific_course(c);
                         break;
                     }
 
                     case 3:
                     {
-                        stud.register_for_course();
+                        stud.registerr_for_course();
                         break;
                     }
                     case 4:
                     {
                         int index;
-                        cout << "\t\t Enter your id" << endl;
+                        cout << "\n\t\t Enter your id : ";
                         cin >> index;
                         index--;
                         stud.view_all_courses(index, s);
@@ -92,11 +92,13 @@ int main()
                     }
                     case 5:
                     {
+
                         int index;
                         string newpass;
-                        cout << "\t\t Enter your id" << endl;
+                        cout << "\n\n\t\t\t\t\t EDIT DATA OF STUDENT \n\n\n\n";
+                        cout << "\n\t\t Enter your id :";
                         cin >> index;
-                        cout << "\t\t Enter the new password " << endl;
+                        cout << "\n\t\t Enter the new password : ";
                         cin >> newpass;
                         index--;
                         stud.edit_data(s, newpass, index);
@@ -108,7 +110,7 @@ int main()
                     }
 
                     }
-                    system("CLS");  // clear the console
+                    //system("CLS");  // clear the console
                     cout << "\n\n\n\t\t\tIf you want to continue enter 1, if not enter another number: ";
                     cin >> continue_loop;
                     cout << "\n\n";
@@ -154,6 +156,17 @@ int main()
                         admin.view_students_in_a_specific_course(s);
                         break;
                     }
+                    case 4:
+                    {
+                        admin.view_List_of_all_courses_in_aspecific_student(s);
+                        break;
+                    }
+
+                    case 5:
+                    {
+                        admin.edit_data_of_courses(c);
+                        break;
+                    }
 
                     }
                     //system("CLS");  // clear the console
@@ -173,7 +186,7 @@ int main()
 }
 
 
-Course data_course(string name, string code,int num,int hour) {
+Course data_course(string name, string code, int num, int hour) {
 
     Course c;
     c.setname(name);
@@ -183,7 +196,7 @@ Course data_course(string name, string code,int num,int hour) {
     return c;
 }
 
-student_info data_student( int academic_year, string name, string password, vector<Course> c)
+student_info data_student(int academic_year, string name, string password, vector<Course> c)
 {
     student_info s;
     s.setname(name);

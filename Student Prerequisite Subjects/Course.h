@@ -7,10 +7,11 @@ class Course
 	string name;
 	string code;
 	int num_of_student;
-	vector<string> required;
 	int hours;
 
 public:
+	vector<string> required;
+
 	Course();
 
 	// set functions

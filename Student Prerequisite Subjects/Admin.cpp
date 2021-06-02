@@ -32,7 +32,7 @@ student_info Admin::addstudent(vector<Course> c)
 	cin >> pass;
 	s.setpassword(pass);
 
-	
+
 	cout << "\n\n\t\t if he/she has finished courses enter 1 to write this courses : ";
 	cin >> check;
 	if (check)
@@ -163,4 +163,89 @@ bool Admin::admin_login(string name, string pass) {
 	}
 	cout << "\t\t\n Please Re-enter Your Data \n\n ";
 	return 0;
+}
+void Admin::view_List_of_all_courses_in_aspecific_student(vector<student_info> s)
+{
+	system("CLS");  // clear the console
+	cout << "\n\n\t\t\t\t\t VIEW LIST OF ALL COURSES IN A SPECIFIC STUDENT \n\n\n\n";
+
+	string search;
+
+	cout << "\n\n\t\t Enter the student name : ";
+	cin >> search;
+
+	cout << "\n\n\t\t\t courses\n\n";
+
+	// it loop for each courses
+	for (int i = 0; i < s.size(); i++)
+	{
+		//int count_progress = s[i].courses_in_progress.size();
+
+		int count_progress2 = s[i].finished_courses.size();
+
+		//it loops for each progress course in progress for a student
+
+	   // it loops for each finished courses for a student
+		for (int j = 0; j < count_progress2; j++)
+		{
+
+			// it check the name of courses that had finished for a student 
+			if (s[i].getname() == search)
+			{
+				// print course name
+				cout << "\t\t\t " << s[i].getfinished_courses(j).getname() << "\n\n";
+			}
+
+			// it loops for each finished courses for a student
+			/*for (int j = 0; j < count_progress; j++)
+			{
+
+				// it check the name of courses that had finished for a student
+				if (s[i].getname() == search)
+				{
+					// print course name
+					cout << "\t\t\t " << s[i].getname() << "\n\n";
+				}
+
+			}*/
+		}
+
+	}
+}
+void Admin::edit_data_of_courses(vector<Course>& c)
+{
+	system("CLS");  // clear the console
+	cout << "\n\n\t\t\t\t\t EDIT DATA OF COURSE \n\n\n\n";
+	string index, require;
+	int count_req;
+
+	int newnum, newhours;
+	cout << "\t\t Enter name of course : ";
+	cin >> index;
+
+	for (int i = 0; i < c.size(); i++) {
+		if (c[i].getname() == index) {
+			cout << "\n\t\t Enter the new number of student : ";
+			cin >> newnum;
+
+			cout << "\n\t Please enter the number of required : ";
+			cin >> count_req;
+			c[i].required.clear();
+			for (int j = 0; j < count_req; j++)
+			{
+				cout << "\n\t Please enter the required : ";
+				cin >> require;
+				c[i].setrequired(require);
+			}
+
+			cout << "\n\t\t Enter the new hours :  ";
+			cin >> newhours;
+
+			c[i].setnum_of_student(newnum);
+			c[i].sethours(newhours);
+
+
+		}
+
+	}
 }

@@ -12,30 +12,6 @@ student::student()
 
 }
 
-/*bool student::open(string nam, string pass, vector<student_info> s)
-{
-	string sname,spass;
-	cout << "Student Name: ";
-	cin >> sname;
-	cout << "Student Password: ";
-	cin >> spass;
-
-	// it loops for each student
-	for (int i = 0; i < s.size(); i++)
-	{
-		if (s[i].getpassword() == pass && s[i].getname() == nam)
-		{
-			return 1;
-		}
-		else
-		{
-			cout << "Please Re-enter Your Data \n ";
-			open("a","1",s);
-			break;
-		}
-	}
-	return 0;
-}*/
 
 bool student::open(string nam, string pass, vector<student_info> s)
 {
@@ -71,7 +47,7 @@ void student::view_all_courses(int num, vector<student_info> s)
 	}
 
 	cout << "\n\n\t\t\t ***********************\n\n";
-	cout << "\n\n\t\t\t ***********************\n\n";
+	cout << "\t\t\t ***********************\n\n";
 	// it loops for each courses in progress from a specific student
 	for (int i = 0; i < count_progress; i++)
 	{
@@ -89,12 +65,37 @@ void student::edit_data(vector<student_info>& s, string pass, int index)
 
 void student::view_list_of_all_available_courses()
 {
+
 }
 
-void student::view_details_of_a_specific_course()
+void student::view_details_of_a_specific_course(vector<Course>& c)
 {
+	system("CLS");  // clear the console
+	cout << "\n\n\t\t\t\t\t  VIEW DETAILS OF A SPECIFIC COURSE \n\n\n\n";
+	string name;
+
+	cout << "\t\t Enter name of course : ";
+	cin >> name;
+
+	for (int i = 0; i < c.size(); i++) {
+		if (c[i].getname() == name) {
+
+			cout << "\n\t\t the number of student  : ";
+			cout << c[i].getnum_of_student();
+
+			cout << "\n\t\t the code is : ";
+			cout << c[i].getcode();
+
+			for (int j = 0; j < c[i].required.size(); j++) {
+				cout << "\n\t\t the required is : ";
+				cout << c[i].getrequired(j);
+			}
+			cout << "\n\t\t the hours are : ";
+			cout << c[i].gethours();
+		}
+	}
 }
 
-void student::register_for_course()
+void student::registerr_for_course()
 {
 }
