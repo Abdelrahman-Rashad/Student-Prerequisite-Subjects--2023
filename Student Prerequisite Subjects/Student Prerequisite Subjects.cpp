@@ -67,7 +67,7 @@ int main()
 
                     case 1:
                     {
-                        stud.view_list_of_all_available_courses();
+                        stud.view_list_of_all_available_courses(c);
                         break;
                     }
                     case 2:
@@ -78,13 +78,18 @@ int main()
 
                     case 3:
                     {
-                        stud.registerr_for_course();
+                        int idr;
+                        cout << "\n\t\t Enter your id :";
+                        cin >> idr;
+
+                        idr--;
+                        stud.registerr_for_course(c, s, idr);
                         break;
                     }
                     case 4:
                     {
                         int index;
-                        cout << "\n\t\t Enter your id : ";
+                        cout << "\n\t\t Enter your id :";
                         cin >> index;
                         index--;
                         stud.view_all_courses(index, s);

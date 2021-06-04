@@ -63,9 +63,14 @@ void student::edit_data(vector<student_info>& s, string pass, int index)
 	s[index].setpassword(pass);
 }
 
-void student::view_list_of_all_available_courses()
+void student::view_list_of_all_available_courses(vector<Course>c)
 {
+	cout << "\n\n\n\t\t\t\t\t  VIEW ALL AVAILABLE COURSES \n\n\n\n";
 
+	for (int i = 0; i < c.size(); i++)
+	{
+		cout << "\n\t\t course " << i + 1 << " : " << c[i].getname() << endl;
+	}
 }
 
 void student::view_details_of_a_specific_course(vector<Course>& c)
@@ -96,6 +101,53 @@ void student::view_details_of_a_specific_course(vector<Course>& c)
 	}
 }
 
-void student::registerr_for_course()
+void student::registerr_for_course(vector<Course>& c, vector<student_info>& s, int idr)
 {
+	cout << "\n\n\n\t\t\t\t\t  REGISTER FOR COURSE \n\n\n\n";
+
+	bool check = 0;
+	int index=0;
+
+	cout << "\n\n\t\t Enter the course :" << endl;
+	string courr;
+	cin >> courr;
+
+	for (int j = 0; j < c.size(); j++)
+	{
+		if (courr == c[j].getname()) {
+			if (c[j].required.size() == NULL)
+			{
+				check = 1;
+				index = j;
+			}
+			else {
+				int coun = s[idr].finished_courses.size();
+				for (int k = 0; k < coun; k++) {
+					for (int m = 0; m < c[j].required.size(); m++) {
+						if (s[idr].getfinished_courses(k).getname() == c[j].getrequired(m)) {
+
+							check = 1;
+							index = j;
+						}
+
+					}
+				}
+			}
+
+		}
+
+	}
+
+
+	if (check == 1) {
+		cout << "\n\n\t\tYour course in progress ." << endl;
+		s[idr].setcourses_in_progress(c[index]);
+	}
+	else {
+		cout << "\n\n\t\tyou should finish more courses" << endl;
+	}
+
+
+
+
 }

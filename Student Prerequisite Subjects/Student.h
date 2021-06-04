@@ -15,7 +15,7 @@ public:
 
 	void view_all_courses(int, vector<student_info>);
 	void  edit_data(vector<student_info>&, string pass, int index);  // edit password
-	void view_list_of_all_available_courses();  // after class admin
+	void view_list_of_all_available_courses(vector<Course> c);  // after class admin
 	void view_details_of_a_specific_course(vector<Course>&); // after class courses
-	void registerr_for_course();        //after class admin & courses
+	void registerr_for_course(vector<Course>& , vector<student_info>& , int );        //after class admin & courses
 };

@@ -40,14 +40,24 @@ student_info Admin::addstudent(vector<Course> c)
 		int count;
 		cout << "\t\t\n Enter the (Number) of courses : ";
 		cin >> count;
+		bool found = 0;
 		for (int i = 0; i < count; i++)
 		{
 			cout << "\n\n\t Please enter the name of the finished course : ";
 			cin >> finished;
-			if (c[i].getname() == finished)
-				s.setfinished_courses(c[i]);
-			else
+			for (int j = 0; j < c.size(); j++)
+			{
+				if (c[j].getname() == finished)
+				{
+					s.setfinished_courses(c[i]);
+					found = 1;
+				}
+			}
+			if (!found)
+			{
 				cout << "\n\t\t This course is not found \n\n";
+			}
+			
 
 		}
 
